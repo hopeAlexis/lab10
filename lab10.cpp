@@ -75,23 +75,29 @@ int main()
 
 	Machine* machine = new Machine(id, model);
 
-	std::cout << "Enter the amount of components: ";
-	std::cin >> number;
+	std::cout << "Enter the name and the price of a component: ";
+	std::cin >> name >> price;
+	Component* component1 = new Component(1, name, price);
+	machine->AddComponent(component1);
 
 	std::cout << "Enter the name and the price of a component: ";
-	for (size_t i = 0; i < number; i++)
-	{
-		std::cout << i+1 << " component: ";
-		std::cin >> name >> price;
-		Component* component = new Component(i, name, price);
-		machine->AddComponent(component);
-	}
+	std::cin >> name >> price;
+	Component* component2 = new Component(2, name, price);
+	machine->AddComponent(component2);
+
+	std::cout << "Enter the name and the price of a component: ";
+	std::cin >> name >> price;
+	Component* component3 = new Component(3, name, price);
+	machine->AddComponent(component3);
 
 	machine->PrintComponents();
 
 	std::cout << "The price of machine is " << machine->Price() << " rubles";
 
 	delete machine;
+	delete component1;
+	delete component2;
+	delete component3;
 
 	return 0;
 }
